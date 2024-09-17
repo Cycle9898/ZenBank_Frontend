@@ -11,7 +11,10 @@ const ibmPlexSerif = IBM_Plex_Serif({
 
 export const metadata: Metadata = {
 	title: "ZenBank",
-	description: "ZenBank est une plateforme bancaire moderne qui soutient tous ses clients."
+	description: "ZenBank est une plateforme bancaire moderne qui soutient tous ses clients.",
+	icons: {
+		icon: "/icons/ZenBank_logo.png"
+	}
 };
 
 export default function RootLayout({
