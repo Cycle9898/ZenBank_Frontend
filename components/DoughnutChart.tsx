@@ -14,7 +14,7 @@ function DoughnutChart({ accounts }: DoughnutChartProps) {
 				backgroundColor: ["#0747B6", "#2265D8", "#2F91FA"]
 			}
 		],
-		labels: ["Banque 1", "Banque 2", "Banque 3"]
+		labels: ["Compte 1", "Compte 2", "Compte 3"]
 	};
 
 	return (
