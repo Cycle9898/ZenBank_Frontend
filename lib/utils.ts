@@ -181,16 +181,41 @@ export const getTransactionStatus = (date: Date) => {
 
 export const authFormSchema = (type: string) =>
 	z.object({
-		// sign up
-		firstName: type === "sign-in" ? z.string().optional() : z.string().min(3),
-		lastName: type === "sign-in" ? z.string().optional() : z.string().min(3),
-		address1: type === "sign-in" ? z.string().optional() : z.string().max(50),
-		city: type === "sign-in" ? z.string().optional() : z.string().max(50),
-		state: type === "sign-in" ? z.string().optional() : z.string().min(2).max(2),
-		postalCode: type === "sign-in" ? z.string().optional() : z.string().min(3).max(6),
-		dateOfBirth: type === "sign-in" ? z.string().optional() : z.string().min(3),
-		ssn: type === "sign-in" ? z.string().optional() : z.string().min(3),
-		// both
-		email: z.string().email(),
-		password: z.string().min(8)
+		// sign-up only
+		firstName:
+			type === "sign-in"
+				? z.string().optional()
+				: z
+						.string({ message: "Requis" })
+						.min(3, { message: "Le prénom doit contenir au minimum 3 caractères" }),
+		lastName:
+			type === "sign-in"
+				? z.string().optional()
+				: z.string({ message: "Requis" }).min(3, { message: "Le nom doit contenir au minimum 3 caractères" }),
+		address1:
+			type === "sign-in"
+				? z.string().optional()
+				: z.string({ message: "Requis" }).max(50, { message: "L'adresse ne doit pas dépasser 50 caractères" }),
+		locality:
+			type === "sign-in"
+				? z.string().optional()
+				: z
+						.string({ message: "Requis" })
+						.max(50, { message: "La localité ne doit pas dépasser 50 caractères" }),
+		postalCode:
+			type === "sign-in"
+				? z.string().optional()
+				: z
+						.string({ message: "Requis" })
+						.min(5, { message: "Le code postal doit contenir 5 chiffres" })
+						.max(5, { message: "Le code postal doit contenir 5 chiffres" }),
+		birthDate:
+			type === "sign-in"
+				? z.string().optional()
+				: z.string({ message: "Requis" }).min(6, { message: "La date de naissance est invalide" }),
+		// sign-up and sign-in
+		email: z.string({ message: "Requis" }).email({ message: "L'adresse e-mail est invalide" }),
+		password: z
+			.string({ message: "Requis" })
+			.min(8, { message: "Le mot de passe doit contenir au minimum 8 caractères" })
 	});
