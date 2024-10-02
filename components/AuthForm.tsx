@@ -36,6 +36,7 @@ function AuthForm({ type }: AuthFormProps) {
 		try {
 			if (type === "sign-up") {
 				const newUser = await signUp(data);
+
 				setUser(newUser);
 			}
 
