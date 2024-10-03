@@ -13,7 +13,7 @@ async function Home() {
 					<HeaderBox
 						type="greeting"
 						title="Bienvenue"
-						user={loggedIn.name || "Guest"}
+						user={loggedIn?.name || "Guest"}
 						subtext="Accédez et gérez votre compte ou vos transactions efficacement."
 					/>
 
