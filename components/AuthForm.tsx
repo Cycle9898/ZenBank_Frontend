@@ -14,6 +14,7 @@ import { Loader2 } from "lucide-react";
 import { signIn } from "@/lib/actions/user.actions";
 import { useRouter } from "next/navigation";
 import { signUp } from "@/lib/actions/user.actions";
+import PlaidLink from "./PlaidLink";
 
 function AuthForm({ type }: AuthFormProps) {
 	const router = useRouter();
@@ -66,7 +67,7 @@ function AuthForm({ type }: AuthFormProps) {
 
 				<div className="flex flex-col gap-1 md:gap-3">
 					<h1 className="text-24 lg:text-36 font-semibold text-gray-900">
-						{user ? "Link Account" : type === "sign-in" ? "Se Connecter" : "S'Inscrire"}
+						{user ? "Link Account" : type === "sign-in" ? "Se connecter" : "S'inscrire"}
 						<span className="block text-16 font-normal text-gray-600">
 							{user ? "Associez votre compte pour commencer" : "Veuillez entrer vos identifiants"}
 						</span>
@@ -155,9 +156,9 @@ function AuthForm({ type }: AuthFormProps) {
 											&nbsp;Chargement...
 										</>
 									) : type === "sign-in" ? (
-										"Se Connecter"
+										"Se connecter"
 									) : (
-										"S'Inscrire"
+										"S'inscrire"
 									)}
 								</Button>
 							</div>
@@ -169,14 +170,14 @@ function AuthForm({ type }: AuthFormProps) {
 							<>
 								<p className="text-14 font-normal text-gray-600">Vous n&apos;avez pas de compte ?</p>
 								<Link href="/sign-up" className="form-link">
-									S&apos;Inscrire
+									S&apos;inscrire
 								</Link>
 							</>
 						) : (
 							<>
 								<p className="text-14 font-normal text-gray-600">Vous avez déjà un compte ?</p>
 								<Link href="/sign-in" className="form-link">
-									Se Connecter
+									Se connecter
 								</Link>
 							</>
 						)}

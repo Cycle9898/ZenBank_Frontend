@@ -14,7 +14,7 @@ async function Home() {
 						type="greeting"
 						title="Bienvenue"
 						user={loggedIn?.name || "Guest"}
-						subtext="Accédez et gérez votre compte ou vos transactions efficacement."
+						subtext="Accédez et gérez vos comptes ou vos transactions efficacement."
 					/>
 
 					<TotalBalanceBox accounts={[]} totalBanks={1} totalCurrentBalance={1250.35} />

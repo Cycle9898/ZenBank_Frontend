@@ -10,11 +10,12 @@ function TotalBalanceBox({ accounts = [], totalBanks, totalCurrentBalance }: Tot
 
 			<div className="flex flex-col gap-6">
 				<h2 className="header-2">
-					{totalBanks}&nbsp;{totalBanks > 1 ? "Comptes Bancaires" : "Compte Bancaire"}
+					{totalBanks > 1 ? "Comptes bancaires: " : "Compte bancaire: "}
+					{totalBanks}
 				</h2>
 
 				<div className="flex flex-col gap-2">
-					<p className="total-balance-label">Solde Total Actuel</p>
+					<p className="total-balance-label">Solde total actuel</p>
 
 					<div className="total-balance-amount flex-center gap-2">
 						<AnimatedCounter amount={totalCurrentBalance} />
