@@ -18,8 +18,8 @@ import PlaidLink from "./PlaidLink";
 
 function AuthForm({ type }: AuthFormProps) {
 	const router = useRouter();
-	const [user, setUser] = useState(null);
-	const [isLoading, setIsLoading] = useState(false);
+	const [user, setUser] = useState<User | null>(null);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 
 	const formSchema = authFormSchema(type);
 
@@ -36,7 +36,18 @@ function AuthForm({ type }: AuthFormProps) {
 
 		try {
 			if (type === "sign-up") {
-				const newUser = await signUp(data);
+				const userData = {
+					firstName: data.firstName!,
+					lastName: data.lastName!,
+					address1: data.address1!,
+					locality: data.locality!,
+					postalCode: data.postalCode!,
+					birthDate: data.birthDate!,
+					email: data.email,
+					password: data.password
+				};
+
+				const newUser = await signUp(userData);
 
 				setUser(newUser);
 			}
@@ -67,16 +78,20 @@ function AuthForm({ type }: AuthFormProps) {
 
 				<div className="flex flex-col gap-1 md:gap-3">
 					<h1 className="text-24 lg:text-36 font-semibold text-gray-900">
-						{user ? "Link Account" : type === "sign-in" ? "Se connecter" : "S'inscrire"}
+						{user ? "Lier un compte bancaire" : type === "sign-in" ? "Se connecter" : "S'inscrire"}
 						<span className="block text-16 font-normal text-gray-600">
-							{user ? "Associez votre compte pour commencer" : "Veuillez entrer vos identifiants"}
+							{user
+								? "Associez votre compte bancaire pour commencer"
+								: "Veuillez entrer vos informations"}
 						</span>
 					</h1>
 				</div>
 			</header>
 
 			{user ? (
-				<div className="flex flex-col gap-4">{/* TODO: add PlaidLink component */}</div>
+				<div className="flex flex-col gap-4">
+					<PlaidLink user={user} variant="primary" />
+				</div>
 			) : (
 				<>
 					<Form {...form}>
