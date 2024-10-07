@@ -36,15 +36,17 @@ function AuthForm({ type }: AuthFormProps) {
 
 		try {
 			if (type === "sign-up") {
+				const shortenedSsn = data.ssn?.slice(0, 9);
+
 				const userData = {
 					firstName: data.firstName!,
 					lastName: data.lastName!,
 					address1: data.address1!,
 					city: data.city!,
-					state: data.state!,
+					state: "CA",
 					postalCode: data.postalCode!,
 					dateOfBirth: data.dateOfBirth!,
-					ssn: data.ssn!,
+					ssn: shortenedSsn!,
 					email: data.email,
 					password: data.password
 				};

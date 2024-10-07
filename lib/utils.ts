@@ -225,7 +225,8 @@ export const authFormSchema = (type: string) =>
 				? z.string().optional()
 				: z
 						.string({ message: "Requis" })
-						.max(9, { message: "Le numéro de Sécurité Sociale ne doit pas dépasser 9 chiffres" }),
+						.min(9, { message: "Le numéro de Sécurité Sociale doit contenir au moins 9 chiffres" })
+						.max(15, { message: "Le numéro de Sécurité Sociale ne doit pas dépasser 15 chiffres" }),
 		// sign-up and sign-in
 		email: z.string({ message: "Requis" }).email({ message: "L'adresse e-mail est invalide" }),
 		password: z
