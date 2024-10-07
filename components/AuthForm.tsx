@@ -40,9 +40,11 @@ function AuthForm({ type }: AuthFormProps) {
 					firstName: data.firstName!,
 					lastName: data.lastName!,
 					address1: data.address1!,
-					locality: data.locality!,
+					city: data.city!,
+					state: data.state!,
 					postalCode: data.postalCode!,
-					birthDate: data.birthDate!,
+					dateOfBirth: data.dateOfBirth!,
+					ssn: data.ssn!,
 					email: data.email,
 					password: data.password
 				};
@@ -131,7 +133,7 @@ function AuthForm({ type }: AuthFormProps) {
 
 										<CustomInput
 											control={form.control}
-											name="locality"
+											name="city"
 											label="Localité"
 											placeholder="Ex: Paris"
 										/>
@@ -139,11 +141,27 @@ function AuthForm({ type }: AuthFormProps) {
 
 									<CustomInput
 										control={form.control}
-										name="birthDate"
-										label="Date de naissance"
-										placeholder="JJ/MM/AAAA"
-										inputType="date"
+										name="state"
+										label="Région"
+										placeholder="Renseignez votre région"
 									/>
+
+									<div className="flex gap-4">
+										<CustomInput
+											control={form.control}
+											name="dateOfBirth"
+											label="Date de naissance"
+											placeholder="JJ/MM/AAAA"
+											inputType="date"
+										/>
+
+										<CustomInput
+											control={form.control}
+											name="ssn"
+											label="Numéro de Sécurité Sociale"
+											placeholder="1234567890123"
+										/>
+									</div>
 								</>
 							)}
 

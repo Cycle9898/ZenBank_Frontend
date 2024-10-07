@@ -196,12 +196,16 @@ export const authFormSchema = (type: string) =>
 			type === "sign-in"
 				? z.string().optional()
 				: z.string({ message: "Requis" }).max(50, { message: "L'adresse ne doit pas dépasser 50 caractères" }),
-		locality:
+		city:
 			type === "sign-in"
 				? z.string().optional()
 				: z
 						.string({ message: "Requis" })
 						.max(50, { message: "La localité ne doit pas dépasser 50 caractères" }),
+		state:
+			type === "sign-in"
+				? z.string().optional()
+				: z.string({ message: "Requis" }).max(50, { message: "La région ne doit pas dépasser 50 caractères" }),
 		postalCode:
 			type === "sign-in"
 				? z.string().optional()
@@ -209,10 +213,19 @@ export const authFormSchema = (type: string) =>
 						.string({ message: "Requis" })
 						.min(5, { message: "Le code postal doit contenir 5 chiffres" })
 						.max(5, { message: "Le code postal doit contenir 5 chiffres" }),
-		birthDate:
+		dateOfBirth:
 			type === "sign-in"
 				? z.string().optional()
-				: z.string({ message: "Requis" }).min(6, { message: "La date de naissance est invalide" }),
+				: z
+						.string({ message: "Requis" })
+						.min(8, { message: "La date de naissance est invalide" })
+						.max(10, { message: "La date de naissance est invalide" }),
+		ssn:
+			type === "sign-in"
+				? z.string().optional()
+				: z
+						.string({ message: "Requis" })
+						.max(9, { message: "Le numéro de Sécurité Sociale ne doit pas dépasser 9 chiffres" }),
 		// sign-up and sign-in
 		email: z.string({ message: "Requis" }).email({ message: "L'adresse e-mail est invalide" }),
 		password: z
