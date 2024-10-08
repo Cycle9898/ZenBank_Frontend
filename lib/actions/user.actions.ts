@@ -1,6 +1,6 @@
 "use server";
 
-import { ID } from "node-appwrite";
+import { ID, Query } from "node-appwrite";
 import { createAdminClient, createSessionClient } from "../appwrite";
 import { cookies } from "next/headers";
 import { encryptId, extractCustomerIdFromUrl, parseStringify } from "../utils";
@@ -16,20 +16,34 @@ const {
 	APPWRITE_BANK_COLLECTION_ID: BANK_COLLECTION_ID
 } = process.env;
 
+export async function getUserInfo({ userId }: GetUserInfoProps) {
+	try {
+		const { database } = await createAdminClient();
+
+		const user = await database.listDocuments(DATABASE_ID!, USER_COLLECTION_ID!, [Query.equal("userId", [userId])]);
+
+		return parseStringify(user.documents[0]);
+	} catch (error) {
+		console.error(error);
+	}
+}
+
 export async function signIn({ email, password }: SignInProps) {
 	try {
 		const { account } = await createAdminClient();
 
-		const response = await account.createEmailPasswordSession(email, password);
+		const session = await account.createEmailPasswordSession(email, password);
 
-		cookies().set("appwrite-session", response.secret, {
+		cookies().set("appwrite-session", session.secret, {
 			path: "/",
 			httpOnly: true,
 			sameSite: "strict",
 			secure: true
 		});
 
-		return parseStringify(response);
+		const user = await getUserInfo({ userId: session.userId });
+
+		return parseStringify(user);
 	} catch (error) {
 		console.error("Error:", error);
 	}
@@ -82,7 +96,8 @@ export async function getLoggedInUser() {
 	try {
 		const { account } = await createSessionClient();
 
-		const user = await account.get();
+		const result = await account.get();
+		const user = await getUserInfo({ userId: result.$id });
 
 		return parseStringify(user);
 	} catch (error) {
@@ -111,7 +126,7 @@ export async function createLinkToken(user: User) {
 			client_name: `${user.firstName} ${user.lastName}`,
 			products: ["auth"] as Products[],
 			language: "fr",
-			country_codes: ["FR"] as CountryCode[]
+			country_codes: ["US"] as CountryCode[]
 		};
 
 		const response = await plaidClient.linkTokenCreate(tokenParams);
@@ -195,6 +210,34 @@ export async function exchangePublicToken({ publicToken, user }: ExchangePublicT
 		revalidatePath("/");
 
 		return parseStringify({ publicTokenExchange: "complete" });
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+export async function getBanks({ userId }: GetBanksProps) {
+	try {
+		const { database } = await createAdminClient();
+
+		const banks = await database.listDocuments(DATABASE_ID!, BANK_COLLECTION_ID!, [
+			Query.equal("userId", [userId])
+		]);
+
+		return parseStringify(banks.documents);
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+export async function getBank({ documentId }: GetBankProps) {
+	try {
+		const { database } = await createAdminClient();
+
+		const bank = await database.listDocuments(DATABASE_ID!, BANK_COLLECTION_ID!, [
+			Query.equal("$id", [documentId])
+		]);
+
+		return parseStringify(bank.documents[0]);
 	} catch (error) {
 		console.error(error);
 	}
