@@ -13,10 +13,10 @@ export const formatDateTime = (dateString: Date) => {
 	const dateTimeOptions: Intl.DateTimeFormatOptions = {
 		weekday: "short", // abbreviated weekday name (e.g., 'Mon')
 		month: "short", // abbreviated month name (e.g., 'Oct')
-		day: "numeric", // numeric day of the month (e.g., '25')
-		hour: "numeric", // numeric hour (e.g., '8')
-		minute: "numeric", // numeric minute (e.g., '30')
-		hour12: true // use 12-hour clock (true) or 24-hour clock (false)
+		day: "2-digit", // numeric day of the month (e.g., '25')
+		hour: "2-digit", // numeric hour (e.g., '8')
+		minute: "2-digit", // numeric minute (e.g., '30')
+		hour12: false // use 12-hour clock (true) or 24-hour clock (false)
 	};
 
 	const dateDayOptions: Intl.DateTimeFormatOptions = {
@@ -33,18 +33,18 @@ export const formatDateTime = (dateString: Date) => {
 	};
 
 	const timeOptions: Intl.DateTimeFormatOptions = {
-		hour: "numeric", // numeric hour (e.g., '8')
-		minute: "numeric", // numeric minute (e.g., '30')
-		hour12: true // use 12-hour clock (true) or 24-hour clock (false)
+		hour: "2-digit", // numeric hour (e.g., '8')
+		minute: "2-digit", // numeric minute (e.g., '30')
+		hour12: false // use 12-hour clock (true) or 24-hour clock (false)
 	};
 
-	const formattedDateTime: string = new Date(dateString).toLocaleString("en-US", dateTimeOptions);
+	const formattedDateTime: string = new Date(dateString).toLocaleString("fr-FR", dateTimeOptions);
 
-	const formattedDateDay: string = new Date(dateString).toLocaleString("en-US", dateDayOptions);
+	const formattedDateDay: string = new Date(dateString).toLocaleString("fr-FR", dateDayOptions);
 
-	const formattedDate: string = new Date(dateString).toLocaleString("en-US", dateOptions);
+	const formattedDate: string = new Date(dateString).toLocaleString("fr-FR", dateOptions);
 
-	const formattedTime: string = new Date(dateString).toLocaleString("en-US", timeOptions);
+	const formattedTime: string = new Date(dateString).toLocaleString("fr-FR", timeOptions);
 
 	return {
 		dateTime: formattedDateTime,
@@ -176,7 +176,7 @@ export const getTransactionStatus = (date: Date) => {
 	const twoDaysAgo = new Date(today);
 	twoDaysAgo.setDate(today.getDate() - 2);
 
-	return date > twoDaysAgo ? "Processing" : "Success";
+	return date > twoDaysAgo ? "En cours" : "Validée";
 };
 
 export const authFormSchema = (type: string) =>

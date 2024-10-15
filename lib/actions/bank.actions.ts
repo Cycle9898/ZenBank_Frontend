@@ -125,11 +125,11 @@ export const getInstitution = async ({ institutionId }: GetInstitutionProps) => 
 			country_codes: ["US"] as CountryCode[]
 		});
 
-		const intitution = institutionResponse.data.institution;
+		const institution = institutionResponse.data.institution;
 
-		return parseStringify(intitution);
+		return parseStringify(institution);
 	} catch (error) {
-		console.error("An error occurred while getting the accounts:", error);
+		console.error("An error occurred while getting the institution:", error);
 	}
 };
 
@@ -165,6 +165,6 @@ export const getTransactions = async ({ accessToken }: GetTransactionsProps) => 
 
 		return parseStringify(transactions);
 	} catch (error) {
-		console.error("An error occurred while getting the accounts:", error);
+		console.error("An error occurred while getting the transactions:", error);
 	}
 };

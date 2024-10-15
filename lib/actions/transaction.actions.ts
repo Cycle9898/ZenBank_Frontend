@@ -19,7 +19,7 @@ export const createTransaction = async (transaction: CreateTransactionProps) => 
 
 		return parseStringify(newTransaction);
 	} catch (error) {
-		console.log(error);
+		console.error(error);
 	}
 };
 
@@ -42,6 +42,6 @@ export const getTransactionsByBankId = async ({ bankId }: GetTransactionsByBankI
 
 		return parseStringify(transactions);
 	} catch (error) {
-		console.log(error);
+		console.error(error);
 	}
 };
