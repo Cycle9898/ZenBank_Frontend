@@ -90,7 +90,7 @@ export const topCategoryStyles = {
 	}
 };
 
-export const transactionCategoryStyles = {
+export const transactionCellNameStyles = {
 	"Food and Drink": {
 		borderColor: "border-pink-600",
 		backgroundColor: "bg-pink-500",
@@ -115,13 +115,13 @@ export const transactionCategoryStyles = {
 		textColor: "text-red-700",
 		chipBackgroundColor: "bg-inherit"
 	},
-	Processing: {
+	"En cours": {
 		borderColor: "border-[#F2F4F7]",
 		backgroundColor: "bg-gray-500",
 		textColor: "text-[#344054]",
 		chipBackgroundColor: "bg-[#F2F4F7]"
 	},
-	Success: {
+	Validée: {
 		borderColor: "border-[#12B76A]",
 		backgroundColor: "bg-[#12B76A]",
 		textColor: "text-[#027A48]",

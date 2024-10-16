@@ -231,8 +231,8 @@ declare interface TransactionHistoryTableProps {
 	page: number;
 }
 
-declare interface CategoryBadgeProps {
-	category: string;
+declare interface StyledBadgeProps {
+	cellContent: string;
 }
 
 declare interface TransactionTableProps {

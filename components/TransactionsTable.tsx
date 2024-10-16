@@ -1,5 +1,20 @@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { formatAmount, formatDateTime, getTransactionStatus, removeSpecialCharacters } from "@/lib/utils";
+import { transactionCellNameStyles } from "@/constants";
+import { cn, formatAmount, formatDateTime, getTransactionStatus, removeSpecialCharacters } from "@/lib/utils";
+
+const StyledBadge = ({ cellContent }: StyledBadgeProps) => {
+	type CellContentType = keyof typeof transactionCellNameStyles;
+
+	const { borderColor, backgroundColor, textColor, chipBackgroundColor } =
+		transactionCellNameStyles[cellContent as CellContentType] || transactionCellNameStyles.default;
+
+	return (
+		<div className={cn("styled-badge", borderColor, chipBackgroundColor)}>
+			<div className={cn("size-2 rounded-full", backgroundColor)} />
+			<p className={cn("text-[12px] font-medium", textColor)}>{cellContent}</p>
+		</div>
+	);
+};
 
 function TransactionsTable({ transactions }: TransactionTableProps) {
 	return (
@@ -24,22 +39,43 @@ function TransactionsTable({ transactions }: TransactionTableProps) {
 						const isDebit = transaction.type === "debit";
 
 						return (
-							<TableRow key={transaction.id}>
-								<TableCell>
-									<div>
-										<h1>{removeSpecialCharacters(transaction.name)}</h1>
+							<TableRow
+								key={transaction.id}
+								className={`${
+									isDebit || amount[0] === "-" ? "bg-[#FFFBFA]" : "bg-[#F6FEF9]"
+								} hover:bg-transparent !border-b-DEFAULT`}>
+								<TableCell className="max-w-[250px] pl-2 pr-10">
+									<div className="flex items-center gap-3">
+										<h1
+											className="text-14 truncate font-semibold text-[#344054]"
+											title={transaction.name}>
+											{removeSpecialCharacters(transaction.name)}
+										</h1>
 									</div>
 								</TableCell>
 
-								<TableCell>{isDebit ? `-${amount}` : amount}</TableCell>
+								<TableCell
+									className={`pl-2 pr-10 font-semibold ${
+										isDebit || amount[0] === "-" ? "text-[#F04438]" : "text-[#039855]"
+									}`}>
+									{isDebit ? `-${amount}` : amount}
+								</TableCell>
 
-								<TableCell>{status}</TableCell>
+								<TableCell className="pl-2 pr-10">
+									<StyledBadge cellContent={status} />
+								</TableCell>
 
-								<TableCell>{formatDateTime(new Date(transaction.date)).dateTime}</TableCell>
+								<TableCell className="min-w-32 pl-2 pr-10">
+									{formatDateTime(new Date(transaction.date)).dateTime}
+								</TableCell>
 
-								<TableCell>{transaction.paymentChannel}</TableCell>
+								<TableCell className="pl-2 pr-10 capitalize min-w-24 max-md:hidden">
+									{transaction.paymentChannel}
+								</TableCell>
 
-								<TableCell>{transaction.category}</TableCell>
+								<TableCell className="pl-2 pr-10 max-md:hidden">
+									<StyledBadge cellContent={transaction.category} />
+								</TableCell>
 							</TableRow>
 						);
 					})
