@@ -24,7 +24,7 @@ function Footer({ user, type = "desktop" }: FooterProps) {
 			</div>
 
 			<div className="footer_image" onClick={handleLogOut}>
-				<Image src="icons/logout.svg" alt="Logout logo" fill />
+				<Image src="icons/logout.svg" alt="Logo déconnexion" fill />
 			</div>
 		</footer>
 	);

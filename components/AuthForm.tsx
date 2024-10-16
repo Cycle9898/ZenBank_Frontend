@@ -75,7 +75,7 @@ function AuthForm({ type }: AuthFormProps) {
 		<section className="auth-form">
 			<header className="flex flex-col gap-5 md:gap-8">
 				<Link href="/" className="cursor-pointer flex items-center gap-1">
-					<Image src="/icons/ZenBank_logo.png" width={34} height={34} alt="ZenBank logo" />
+					<Image src="/icons/ZenBank_logo.png" width={34} height={34} alt="Logo ZenBank" />
 
 					<h1 className="text-26 font-ibm-plex-serif font-bold text-black-1">ZenBank</h1>
 				</Link>

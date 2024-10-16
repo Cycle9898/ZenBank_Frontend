@@ -15,12 +15,18 @@ function MobileNavBar({ user }: MobileNavProps) {
 		<section className="max-w-[264px]">
 			<Sheet>
 				<SheetTrigger>
-					<Image src="/icons/hamburger.svg" width={30} height={30} alt="Menu" className="cursor-pointer" />
+					<Image
+						src="/icons/hamburger.svg"
+						width={30}
+						height={30}
+						alt="Logo hamburger menu"
+						className="cursor-pointer"
+					/>
 				</SheetTrigger>
 
 				<SheetContent side="left" className="border-none bg-white">
 					<Link href="/" className="cursor-pointer flex items-center gap-1 px-4">
-						<Image src="/icons/ZenBank_logo.png" width={34} height={34} alt="ZenBank logo" />
+						<Image src="/icons/ZenBank_logo.png" width={34} height={34} alt="Logo ZenBank" />
 						<h1 className="text-26 font-ibm-plex-serif font-bold text-black-1">ZenBank</h1>
 					</Link>
 

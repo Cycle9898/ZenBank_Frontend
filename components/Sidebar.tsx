@@ -19,7 +19,7 @@ function Sidebar({ user }: SiderbarProps) {
 						src="/icons/ZenBank_logo.png"
 						width={34}
 						height={34}
-						alt="ZenBank logo"
+						alt="Logo ZenBank"
 						className="size-[24px] max-xl:size-14"
 					/>
 					<h1 className="sidebar-logo">ZenBank</h1>

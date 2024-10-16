@@ -47,12 +47,12 @@ function PlaidLink({ user, variant }: PlaidLinkProps) {
 				</Button>
 			) : variant === "ghost" ? (
 				<Button onClick={() => open()} variant="ghost" className="plaidlink-ghost">
-					<Image src="/icons/connect-bank.svg" alt="logo connexion banque" width={24} height={24} />
+					<Image src="/icons/connect-bank.svg" alt="Logo liaison compte bancaire" width={24} height={24} />
 					<p className="hidden xl:block text-[16px] font-semibold text-black-2">Lier un compte bancaire</p>
 				</Button>
 			) : (
 				<Button onClick={() => open()} className="plaidlink-default">
-					<Image src="/icons/connect-bank.svg" alt="logo connexion banque" width={24} height={24} />
+					<Image src="/icons/connect-bank.svg" alt="Logo liaison compte bancaire" width={24} height={24} />
 					<p className="text-[16px] font-semibold text-black-2">Lier un compte bancaire</p>
 				</Button>
 			)}

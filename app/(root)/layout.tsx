@@ -19,7 +19,7 @@ export default async function RootLayout({
 
 			<div className="flex size-full flex-col">
 				<div className="root-layout">
-					<Image src="/icons/ZenBank_logo.png" width={30} height={30} alt="ZenBank logo" />
+					<Image src="/icons/ZenBank_logo.png" width={30} height={30} alt="Logo ZenBank" />
 
 					<MobileNavBar user={loggedIn} />
 				</div>

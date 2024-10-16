@@ -29,12 +29,18 @@ function BankCard({ account, userName, showBalance = true }: CreditCardProps) {
 				</div>
 
 				<div className="bank-card_icon">
-					<Image src="/icons/Paypass.svg" width={20} height={24} alt="pay logo" />
+					<Image src="/icons/Paypass.svg" width={20} height={24} alt="Logo paiement" />
 
-					<Image src="/icons/mastercard.svg" width={45} height={32} alt="mastercard logo" className="ml-5" />
+					<Image src="/icons/mastercard.svg" width={45} height={32} alt="Logo Mastercard" className="ml-5" />
 				</div>
 
-				<Image src="/icons/lines.png" width={316} height={190} alt="lines" className="absolute top-0 left-0" />
+				<Image
+					src="/icons/lines.png"
+					width={316}
+					height={190}
+					alt="Illustration de lignes"
+					className="absolute top-0 left-0"
+				/>
 			</Link>
 
 			{/* TODO: be able to copy card number */}

@@ -26,7 +26,7 @@ function HomeRightSidebar({ user, transactions, banks }: RightSidebarProps) {
 					<h2 className="header-2">Mes comptes</h2>
 
 					<Link href="/" className="flex gap-2">
-						<Image src="/icons/plus.svg" width={20} height={20} alt="plus logo" />
+						<Image src="/icons/plus.svg" width={20} height={20} alt="Logo plus" />
 
 						<h2 className="text-14 font-semibold text-gray-600">Ajouter un compte</h2>
 					</Link>
