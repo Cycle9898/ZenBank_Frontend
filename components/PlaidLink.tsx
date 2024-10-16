@@ -3,6 +3,7 @@ import { Button } from "./ui/button";
 import { PlaidLinkOnSuccess, PlaidLinkOptions, usePlaidLink } from "react-plaid-link";
 import { useRouter } from "next/navigation";
 import { createLinkToken, exchangePublicToken } from "@/lib/actions/user.actions";
+import Image from "next/image";
 
 function PlaidLink({ user, variant }: PlaidLinkProps) {
 	const router = useRouter();
@@ -45,9 +46,15 @@ function PlaidLink({ user, variant }: PlaidLinkProps) {
 					Se connecter à ma banque
 				</Button>
 			) : variant === "ghost" ? (
-				<Button>Se connecter à ma banque</Button>
+				<Button onClick={() => open()} variant="ghost" className="plaidlink-ghost">
+					<Image src="/icons/connect-bank.svg" alt="logo connexion banque" width={24} height={24} />
+					<p className="hidden xl:block text-[16px] font-semibold text-black-2">Lier un compte bancaire</p>
+				</Button>
 			) : (
-				<Button>Se connecter à ma banque</Button>
+				<Button onClick={() => open()} className="plaidlink-default">
+					<Image src="/icons/connect-bank.svg" alt="logo connexion banque" width={24} height={24} />
+					<p className="text-[16px] font-semibold text-black-2">Lier un compte bancaire</p>
+				</Button>
 			)}
 		</>
 	);
