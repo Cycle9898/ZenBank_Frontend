@@ -1,32 +1,37 @@
+"use client";
+
 import { formatAmount, formUrlQuery } from "@/lib/utils";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger } from "@/components/ui/select";
 
 function BankDropdown({ accounts = [], setValue, otherStyles }: BankDropdownProps) {
 	const searchParams = useSearchParams();
 	const router = useRouter();
-	const [selected, setSelected] = useState<Account | null>(null);
+	const [selected, setSelected] = useState<Account>(accounts[0]);
 
 	const handleBankChange = (id: string) => {
 		const account = accounts.find(account => account.appwriteItemId === id)!;
 
 		setSelected(account);
+
 		const newUrl = formUrlQuery({
 			params: searchParams.toString(),
 			key: "id",
 			value: id
 		});
 		router.push(newUrl, { scroll: false });
-
-		if (setValue) {
-			setValue("senderBank", id);
-		}
 	};
 
+	useEffect(() => {
+		if (setValue) {
+			setValue("senderBank", selected.appwriteItemId);
+		}
+	}, [selected.appwriteItemId, setValue]);
+
 	return (
-		<Select defaultValue={selected?.id} onValueChange={value => handleBankChange(value)}>
+		<Select defaultValue={selected?.appwriteItemId} onValueChange={value => handleBankChange(value)}>
 			<SelectTrigger className={`flex w-full bg-white gap-3 md:w-[300px] ${otherStyles}`}>
 				<Image src="icons/credit-card.svg" width={20} height={20} alt="account" />
 				<p className="line-clamp-1 w-full text-left">{selected?.name}</p>

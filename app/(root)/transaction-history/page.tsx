@@ -1,3 +1,4 @@
+import BankDropdown from "@/components/BankDropdown";
 import HeaderBox from "@/components/HeaderBox";
 import Pagination from "@/components/Pagination";
 import TransactionsTable from "@/components/TransactionsTable";
@@ -32,6 +33,10 @@ async function TransactionHistory({ searchParams: { id, page } }: SearchParamPro
 					title="Historique des transactions"
 					subtext="Consultez le detail d'un compte bancaire et vos transactions"
 				/>
+			</div>
+
+			<div>
+				<BankDropdown accounts={accounts?.data} otherStyles="!w-full" />
 			</div>
 
 			<div className="space-y-6">
