@@ -29,6 +29,7 @@ function HomeRightSidebar({ user, transactions, banks }: RightSidebarProps) {
 						<Image src="/icons/plus.svg" width={20} height={20} alt="Logo plus" />
 
 						<h2 className="text-14 font-semibold text-gray-600">Ajouter un compte</h2>
+						{/* TODO: check if this link is useful or need to be fixed */}
 					</Link>
 				</div>
 

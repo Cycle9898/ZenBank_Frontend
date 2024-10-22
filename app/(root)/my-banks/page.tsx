@@ -15,7 +15,7 @@ async function MyBanks() {
 				<HeaderBox title="Mes comptes bancaires" subtext="Gérez sans efforts vos activités bancaires" />
 
 				<div className="space-y-4">
-					<h2 className="header-2">Vos cartes bancaires</h2>
+					<h2 className="header-2">Vos comptes bancaires</h2>
 
 					<div className="flex flex-wrap gap-6">
 						{accounts &&
