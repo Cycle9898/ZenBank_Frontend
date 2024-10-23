@@ -43,7 +43,7 @@ async function Home({ searchParams: { id, page } }: SearchParamProps) {
 				/>
 			</div>
 
-			<HomeRightSidebar user={loggedIn} transactions={accounts?.transactions} banks={accountsData?.slice(0, 2)} />
+			<HomeRightSidebar user={loggedIn} transactions={account?.transactions} banks={accountsData?.slice(0, 2)} />
 		</section>
 	);
 }
