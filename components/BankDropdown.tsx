@@ -9,7 +9,8 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrig
 function BankDropdown({ accounts = [], setValue, otherStyles }: BankDropdownProps) {
 	const searchParams = useSearchParams();
 	const router = useRouter();
-	const [selected, setSelected] = useState<Account>(accounts[0]);
+	const defaultAccount = accounts.find(account => account.appwriteItemId === searchParams.get("id")) || accounts[0];
+	const [selected, setSelected] = useState<Account>(defaultAccount);
 
 	const handleBankChange = (id: string) => {
 		const account = accounts.find(account => account.appwriteItemId === id)!;
