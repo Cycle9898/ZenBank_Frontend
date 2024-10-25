@@ -63,8 +63,6 @@ function MobileNavBar({ user }: MobileNavProps) {
 										</SheetClose>
 									);
 								})}
-
-								{/* TODO: add connect bank */}
 							</nav>
 						</SheetClose>
 

@@ -1,5 +1,6 @@
 import BankCard from "@/components/BankCard";
 import HeaderBox from "@/components/HeaderBox";
+import PlaidLink from "@/components/PlaidLink";
 import { getAccounts } from "@/lib/actions/bank.actions";
 import { getLoggedInUser } from "@/lib/actions/user.actions";
 
@@ -15,7 +16,11 @@ async function MyBanks() {
 				<HeaderBox title="Mes comptes bancaires" subtext="Gérez sans efforts vos activités bancaires" />
 
 				<div className="space-y-4">
-					<h2 className="header-2">Vos comptes bancaires</h2>
+					<div className="max-w-fit flex flex-col md:flex-row gap-4 items-start md:items-center">
+						<h2 className="header-2">Vos comptes bancaires</h2>
+
+						<PlaidLink user={loggedIn} variant="compact" />
+					</div>
 
 					<div className="flex flex-wrap gap-6">
 						{accounts &&

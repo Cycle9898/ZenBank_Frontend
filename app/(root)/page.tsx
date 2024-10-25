@@ -1,5 +1,6 @@
 import HeaderBox from "@/components/HeaderBox";
 import HomeRightSidebar from "@/components/HomeRightSidebar";
+import PlaidLink from "@/components/PlaidLink";
 import RecentTransaction from "@/components/RecentTransaction";
 import TotalBalanceBox from "@/components/TotalBalanceBox";
 import { getAccount, getAccounts } from "@/lib/actions/bank.actions";
@@ -34,6 +35,10 @@ async function Home({ searchParams: { id, page } }: SearchParamProps) {
 						totalCurrentBalance={accounts?.totalCurrentBalance}
 					/>
 				</header>
+
+				<div className="flex justify-end md:hidden">
+					<PlaidLink user={loggedIn} variant="compact" />
+				</div>
 
 				<RecentTransaction
 					accounts={accountsData}

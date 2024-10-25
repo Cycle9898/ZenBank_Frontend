@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import BankCard from "./BankCard";
 import { countTransactionCategories } from "@/lib/utils";
 import Category from "./Category";
+import PlaidLink from "./PlaidLink";
 
 function HomeRightSidebar({ user, transactions, banks }: RightSidebarProps) {
 	const categories: CategoryCount[] = countTransactionCategories(transactions);
@@ -26,15 +26,12 @@ function HomeRightSidebar({ user, transactions, banks }: RightSidebarProps) {
 			</section>
 
 			<section className="banks">
-				<div className="w-full flex justify-between">
-					<h2 className="header-2">Mes comptes</h2>
-
-					<Link href="/" className="flex gap-2">
-						<Image src="/icons/plus.svg" width={20} height={20} alt="Logo plus" />
-
-						<h2 className="text-14 font-semibold text-gray-600">Ajouter un compte</h2>
-						{/* TODO: check if this link is useful or need to be fixed */}
+				<div className="w-full flex justify-between items-center">
+					<Link href="/my-banks" className="p-2">
+						<h2 className="header-2">Mes comptes</h2>
 					</Link>
+
+					<PlaidLink user={user} variant="compact" />
 				</div>
 
 				{banks.length > 0 && (
