@@ -1,36 +1,118 @@
+# Zen Bank
+
+## Introduction
+
+ZenBank is a modern banking platform.
+
+With this application, you can link your bank accounts, view information and transaction history on them, and transfer funds.
+
+The back-end (authentication and database) is handled by Appwrite.
+
+Plaid is used to retrieve user's bank account informations from banks.
+
+Funds transfer is handled by Dwolla.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## Prerequisites
+
+-   [Node.JS](https://nodejs.org/en)
+
+-   [PNPM](https://pnpm.io/fr/)
+
+-   [Appwrite account](https://cloud.appwrite.io/) for authentication and database
+
+-   [Dwolla account](https://www.dwolla.com/) for money transfer
+
+### Appwrite database fields
+
+#### User
+
+-   'email': Email type, required
+
+-   'userId': String type, required
+
+-   'dwollaCustomerUrl': String type, required
+
+-   'dwollaCustomerId': String type, required
+
+-   'firstName': String type, required
+
+-   'lastName': String type, required
+
+-   'address1': String type, required
+
+-   'city': String type, required
+
+-   'postalCode': String type, required
+
+-   'dateOfBirth': String type, required
+
+-   'ssn': String type, required
+
+-   'state': String type, required
+
+#### Banks
+
+-   'accountId': String type, required
+
+-   'bankId': String type, required
+
+-   'accessToken': String type, required
+
+-   'fundingSourceUrl': String type, required
+
+-   'shareableId': String type, required
+
+-   'userId': Relationship with userId from 'User' type
+
+#### Transactions
+
+-   'name': String type, required
+
+-   'amount': String type, required
+
+-   'channel': String type, required
+
+-   'category': String type, required
+
+-   'senderId': String type, required
+
+-   'receiverId': String type, required
+
+-   'senderBankId': String type, required
+
+-   'receiverBankId': String type, required
+
+-   'email': String type, required
 
 ## Getting Started
 
-First, run the development server:
+1. Create accounts on Dwolla, Appwrite and configure the database with the above templates
+
+2. Clone this project
+
+3. Install dependencies with `pnpm install`
+
+4. Complete the .env file with the requested informations (to be retrieved from your Dwolla and Appwrite accounts)
+
+5. Start the project:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
 # or
-bun dev
+pnpm build
+pnpm preview
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Test the app
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The Zen Bank app is hosted on Vercel : [https://zen-bank.vercel.app/](https://zen-bank.vercel.app/)
 
-## Learn More
+You can test it with the following credentials :
 
-To learn more about Next.js, take a look at the following resources:
+-   Email: 'test@test.com'
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+-   Password: 'password123'
