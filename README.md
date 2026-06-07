@@ -24,6 +24,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 -   [Dwolla account](https://www.dwolla.com/) for money transfer
 
+-   [Plaid account](https://plaid.com/en-eu/) for banking data
+
 ### Appwrite database fields
 
 #### User
@@ -88,7 +90,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-1. Create accounts on Dwolla, Appwrite and configure the database with the above templates
+1. Create accounts on Dwolla, Plaid, Appwrite and configure the database with the above templates
 
 2. Clone this project
 
@@ -107,12 +109,3 @@ pnpm preview
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Test the app
-
-The Zen Bank app is hosted on Vercel : [https://zen-bank.vercel.app/](https://zen-bank.vercel.app/)
-
-You can test it with the following credentials :
-
--   Email: 'test@test.com'
-
--   Password: 'password123'
